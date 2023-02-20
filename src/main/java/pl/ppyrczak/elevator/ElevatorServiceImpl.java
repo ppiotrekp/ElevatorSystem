@@ -1,22 +1,36 @@
 package pl.ppyrczak.elevator;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static java.lang.System.*;
 
 public class ElevatorServiceImpl implements ElevatorService {
 
+    /**
+     * @param floor
+     * @param direction
+     * a method which prints destination floor and direction
+     */
     private void pickup(int floor, Direction direction) {
         out.println("Elevator called, destination floor is: " + floor + ", direction is: " + direction);
     }
 
+    /**
+     * @param elevator
+     * @param currentFloor
+     * a method which updates a current floor of an elevator
+     */
     @Override
     public void update(Elevator elevator, int currentFloor) {
         if (currentFloor <= MAX_FLOOR && currentFloor >= MIN_FLOOR)
             elevator.setCurrentFloor(currentFloor);
     }
 
+    /**
+     * @param elevator
+     * @param floor
+     * a method which executes a simulation of every elevator's step
+     */
     @Override
     public void step(Elevator elevator, int floor) {
         List<Integer> statusInfo;
@@ -43,11 +57,26 @@ public class ElevatorServiceImpl implements ElevatorService {
         }
     }
 
+    /**
+     * @param id
+     * @param currentFloor
+     * @param destinationFloor
+     * @return
+     * a method which returns a status of elevator
+     */
     @Override
     public List<Integer> status(Integer id, int currentFloor, int destinationFloor) {
         return Arrays.asList(id, currentFloor, destinationFloor);
     }
 
+
+    /**
+     * @param elevator
+     * @param myFloor
+     * @return
+     * a method which returns a direction in which
+     * an elevator has to go and prints that information
+     */
     @Override
     public Direction pickup(Elevator elevator, int myFloor) {
         Direction direction = setDirection(myFloor, elevator.getCurrentFloor());
@@ -55,6 +84,12 @@ public class ElevatorServiceImpl implements ElevatorService {
         return direction;
     }
 
+    /**
+     * @param myFloor
+     * @param currentFloor
+     * @return
+     * a method which returns a direction in which an elevator has to go
+     */
     private Direction setDirection(int myFloor, int currentFloor) {
         if (myFloor > currentFloor)
             return Direction.UP;
@@ -63,4 +98,18 @@ public class ElevatorServiceImpl implements ElevatorService {
         return Direction.NONE;
     }
 
+    /**
+     * @param floor
+     * @param floors
+     * @return
+     * a method which returns the minimum difference between
+     * a current floor and a floor from the list of floors
+     */
+    public int minLength(int floor, List<Integer> floors) {
+        List<Integer> differences = new ArrayList<>();
+        for (int f : floors) {
+            differences.add(Math.abs(f-floor));
+        }
+        return Collections.min(differences);
+    }
 }

@@ -1,52 +1,70 @@
 package pl.ppyrczak.elevator;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-import static java.time.temporal.ChronoUnit.SECONDS;
+import static java.lang.System.out;
+import static pl.ppyrczak.elevator.ElevatorService.MAX_FLOOR;
+import static pl.ppyrczak.elevator.ElevatorService.MIN_FLOOR;
 
 public class ElevatorManagement {
-    public static void run(List<Elevator> elevators) {
+    private static boolean started = false;
+    private static int firstFloor;
 
+    /**
+     * @param elevators
+     * a method which handle the all logic of elevators' movement
+     */
+    public static void run(List<Elevator> elevators) {
         while (true) {
             ElevatorServiceImpl service = new ElevatorServiceImpl();
             List<Integer> floors = new ArrayList<>();
-            System.out.println("--------------ELEVATOR SYSTEM--------------");
-            System.out.println("Which elevator do you want to call? ");
-            System.out.println("ID  FLOOR");
+            out.println("--------------ELEVATOR SYSTEM--------------");
+            out.println("Which elevator do you want to call? ");
+            out.println("ID  FLOOR");
             for (Elevator elevator : elevators) {
-                System.out.println(elevator.getId() + "     " + elevator.getCurrentFloor());
+                out.println(elevator.getId() + "     " + elevator.getCurrentFloor());
             }
-            System.out.println();
+            out.println();
             Scanner scanner = new Scanner(System.in);
             int number = scanner.nextInt();
 
             for (Elevator elevator : elevators) {
                 if (elevator.getId() == number) {
-                    System.out.println("You've choosen an elevator with id " + elevator.getId());
-                    System.out.println("Next step is to set a destination floor");
-                    LocalDateTime start = LocalDateTime.now();
-                    long between;
-                    while (floors.isEmpty() || SECONDS.between(start, LocalDateTime.now()) <= 2) {
-                        between = SECONDS.between(start, LocalDateTime.now());
-                        if (!floors.isEmpty() && between >= 3) {
-                            break;
+                    out.println("You've choosen an elevator with id " + elevator.getId());
+                    out.println("Next step is to set a destination floor");
+                    while (!started) {
+                        out.println("choose a floor from " + MIN_FLOOR + " to " + MAX_FLOOR);
+                        String floor = scanner.next();
+                        floors.add(Integer.valueOf(floor));
+
+                        while (!floors.isEmpty()) {
+                            out.println("choose a floor from " + MIN_FLOOR + " to " + MAX_FLOOR);
+                            out.println("Start - s");
+                            floor = scanner.next();
+                            if (floor.equals("s")) {
+                                started = true;
+                                break;
+                            } else
+                                floors.add(Integer.valueOf(floor));
                         }
-                        int floor = scanner.nextInt();
-                        floors.add(floor);
                     }
 
                     while (!floors.isEmpty()) {
-                        service.pickup(elevator, floors.get(0));
-                        service.step(elevator, floors.get(0));
-                        service.update(elevator, floors.get(0));
-                        floors.remove(0);
+                        for (Integer f : floors) {
+                            if (service.minLength(elevator.getCurrentFloor(), floors) == Math.abs(f - elevator.getCurrentFloor())) {
+                                firstFloor = f;
+                            }
+                        }
+                        service.pickup(elevator, firstFloor);
+                        service.step(elevator, firstFloor);
+                        out.println();
+                        service.update(elevator, firstFloor);
+                        floors.remove((Integer) firstFloor);
+                        started = false;
                     }
                 }
             }
-            System.out.println();
+            out.println();
         }
     }
 }
