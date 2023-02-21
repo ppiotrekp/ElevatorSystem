@@ -1,5 +1,4 @@
-ElevatorSystem
-An application which enables us to control the elevators in a building.
+ElevatorSystem - an application which enables us to control the elevators in a building.
 
 Algorithm works as below:
 1. choose an id of the elevator.
