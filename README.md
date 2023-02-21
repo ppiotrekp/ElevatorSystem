@@ -3,7 +3,7 @@ ElevatorSystem - an application which enables us to control the elevators in a b
 Algorithm works as below:
 1. choose an id of the elevator.
 2. choose a number of our ultimate floor (in this example we can choose floors from the range (-3,15)).
-3. click 's' character to start ride or choose another ultimate floor (infinite times).
+3. click 's' character to start a ride or choose another ultimate floor (infinite times).
 4. The elevator starts a ride and visits ultimate floors based on a minimal number of floors to visit (not based on an order of passed ultimate floors).
 5. On each floor the status of an elevator is displayed.
 6. On each ultimate floor the status of an elevator is updated.
