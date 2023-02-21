@@ -25,6 +25,8 @@ Description of methods:
 - minLength(int floor, List<Integer> floors) - a method which returns the minimum difference between a current floor and a floor from the list of floors
 - pickup(int floor, Direction direction) - a method which prints destination floor and direction
 - run(List<Elevator> elevators) - a method in which the all algorithm is processed
+  
+  The application has a few unit tests
 
 ![elevator1](https://user-images.githubusercontent.com/73071921/220354042-a5923d38-fe06-414d-9709-974550fce7f7.png)
 ![elevator2](https://user-images.githubusercontent.com/73071921/220355592-abfff15a-41b6-46b0-ba22-9c5d93adcca3.png)
