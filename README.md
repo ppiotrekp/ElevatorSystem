@@ -12,7 +12,7 @@ Algorithm works as below:
 The project consists of 
 - elevator model class (id, currentFloor),
 - Direction enum (UP, DOWN, NONE),
-- ElevatorService interface with four methods (pickup, update, step and status) and two variables which defines minimal and maximal floor on a building
+- ElevatorService interface with four methods (pickup, update, step and status) and two variables which define minimal and maximal floor on a building
 - ElevatorServiceImpl class which implements the ElevatorService interface and also has overloaded pickup method and setDirection and minLength methods.
 - ElevatorManagement class where the algorithm is processed.
 
