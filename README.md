@@ -17,11 +17,11 @@ The project consists of
 - ElevatorManagement class where the algorithm is processed.
 
 Description of methods:
-pickup(Elevator elevator, int myFloor) - a method which returns a direction in which an elevator has to go and prints that information
-update(Elevator elevator, int currentFloor) - a method which updates a current floor of an elevator
-step(Elevator elevator, int floor) - a method which executes a simulation of every elevator's step (iteration through floors up to the ultimate floor and returns the status of an elevator on each floor)
-status(Integer id, int currentFloor, int destinationFloor) - a method which returns a status of elevator
-setDirection(int myFloor, int currentFloor) - a method which returns a direction in which an elevator has to go
-minLength(int floor, List<Integer> floors) - a method which returns the minimum difference between a current floor and a floor from the list of floors
-pickup(int floor, Direction direction) - a method which prints destination floor and direction
-run(List<Elevator> elevators) - a method in which the all algorithm is processed
+- pickup(Elevator elevator, int myFloor) - a method which returns a direction in which an elevator has to go and prints that information
+- update(Elevator elevator, int currentFloor) - a method which updates a current floor of an elevator
+- step(Elevator elevator, int floor) - a method which executes a simulation of every elevator's step (iteration through floors up to the ultimate floor and returns the status of an elevator on each floor)
+- status(Integer id, int currentFloor, int destinationFloor) - a method which returns a status of elevator
+- setDirection(int myFloor, int currentFloor) - a method which returns a direction in which an elevator has to go
+- minLength(int floor, List<Integer> floors) - a method which returns the minimum difference between a current floor and a floor from the list of floors
+- pickup(int floor, Direction direction) - a method which prints destination floor and direction
+- run(List<Elevator> elevators) - a method in which the all algorithm is processed
