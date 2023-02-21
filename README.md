@@ -27,5 +27,5 @@ Description of methods:
 - run(List<Elevator> elevators) - a method in which the all algorithm is processed
 
 ![elevator1](https://user-images.githubusercontent.com/73071921/220354042-a5923d38-fe06-414d-9709-974550fce7f7.png)
-![elevator2](https://user-images.githubusercontent.com/73071921/220355290-55f1fcf8-d727-4bfb-b842-6f7c075124e3.png)
+![elevator2](https://user-images.githubusercontent.com/73071921/220355592-abfff15a-41b6-46b0-ba22-9c5d93adcca3.png)
 ![elevator3](https://user-images.githubusercontent.com/73071921/220354555-58496040-2259-4c11-857c-97889f520d59.png)
